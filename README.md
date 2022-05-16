@@ -3,7 +3,7 @@
 A simple tkinter program for displaying tex file count and ddl
 ## Usage
 ### Prerequisite
-Make sure you already install Tex environment and have ![TeXcount](https://app.uio.no/ifi/texcount/) package install in your path
+Make sure you already install Tex environment and have [TeXcount](https://app.uio.no/ifi/texcount/) package install in your path
 ### Install deps
 ```shell
 poetry install
