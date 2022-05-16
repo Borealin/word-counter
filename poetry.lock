@@ -11,6 +11,14 @@ pycodestyle = ">=2.8.0"
 toml = "*"
 
 [[package]]
+name = "fastclasses-json"
+version = "0.5.0"
+description = "Quickly serialize dataclasses to and from JSON"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "pycodestyle"
 version = "2.8.0"
 description = "Python style guide checker"
@@ -40,12 +48,16 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c16338145ad4bd8dee35d60f7711652d284fb7dce844fa7848a5e6e7cb004d48"
+content-hash = "8b3628e8ae5ef153db3aa87de024d0c8456e69730254476359aae239eb12510d"
 
 [metadata.files]
 autopep8 = [
     {file = "autopep8-1.6.0-py2.py3-none-any.whl", hash = "sha256:ed77137193bbac52d029a52c59bec1b0629b5a186c495f1eb21b126ac466083f"},
     {file = "autopep8-1.6.0.tar.gz", hash = "sha256:44f0932855039d2c15c4510d6df665e4730f2b8582704fa48f9c55bd3e17d979"},
+]
+fastclasses-json = [
+    {file = "fastclasses-json-0.5.0.tar.gz", hash = "sha256:4666f8519d5cc060f498b688e18e84279d49f0a06ba01bdae38ac5e0b7e84f16"},
+    {file = "fastclasses_json-0.5.0-py3-none-any.whl", hash = "sha256:5b5777a4c6dae77d70bca92663a61669593123b4a55b7889beeeabd1b37ac82b"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.8.0-py2.py3-none-any.whl", hash = "sha256:720f8b39dde8b293825e7ff02c475f3077124006db4f440dcbc9a20b76548a20"},

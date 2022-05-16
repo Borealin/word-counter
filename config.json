@@ -1,18 +1,22 @@
-[
-    {
-        "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\1-introduction.tex",
-        "display": "Intro"
-    },
-    {
-        "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\2-body.tex",
-        "display": "Body"
-    },
-    {
-        "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\3-appendix.tex",
-        "display": "Appendix"
-    },
-    {
-        "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\4-cv.tex",
-        "display": "CV"
-    }
-]
+{
+    "files": [
+        {
+            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\1-introduction.tex",
+            "display": "Intro"
+        },
+        {
+            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\2-body.tex",
+            "display": "Body"
+        },
+        {
+            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\3-appendix.tex",
+            "display": "Appendix"
+        },
+        {
+            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\4-cv.tex",
+            "display": "CV"
+        }
+    ],
+    "ddl": "2022-05-23 23:00",
+    "time_format": "%Y-%m-%d %H:%M"
+}
