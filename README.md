@@ -17,6 +17,10 @@ configure config json file as following, multiple files is possible and will be 
             "filename": "path_to_tex",
             "display": "display_name"
         },
+        {
+            "filename": "path_to_folder/**/*.tex",
+            "display": ""
+        }
     ],
     "ddl": "2022-05-23 23:00",
     "time_format": "%Y-%m-%d %H:%M",

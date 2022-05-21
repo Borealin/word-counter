@@ -31,7 +31,7 @@ class RawWatchFile:
         else:
             try:
                 paths = glob.glob(self.filename, recursive=True)
-                return [WatchFile(Path(p), Path(p).stem) for p in paths]
+                return [WatchFile(Path(p), Path(p).stem) for p in sorted(paths)]
             except Exception as e:
                 print(f'Error globbing {self.filename}: {e}')
                 return []
