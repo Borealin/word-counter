@@ -1,20 +1,8 @@
 {
     "files": [
         {
-            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\1-introduction.tex",
-            "display": "Intro"
-        },
-        {
-            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\2-body.tex",
-            "display": "Body"
-        },
-        {
-            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\3-appendix.tex",
-            "display": "Appendix"
-        },
-        {
-            "filename": "D:\\code\\Graduation-Thesis\\body\\undergraduate\\final\\4-cv.tex",
-            "display": "CV"
+            "filename": "D:\\code\\graduation\\Graduation-Thesis\\body\\undergraduate\\final\\**\\*.tex",
+            "display": ""
         }
     ],
     "ddl": "2022-05-23 23:00",

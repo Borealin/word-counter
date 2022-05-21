@@ -1,18 +1,17 @@
 import argparse
-from dataclasses import dataclass
-from datetime import datetime, timedelta
-from functools import reduce
-import json
-from pathlib import Path
-import tkinter as tk
-from typing import Dict, List, Tuple, Union
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler, FileSystemEvent, EVENT_TYPE_MODIFIED
-
-from queue import Queue
-import sys
+import glob
+import os.path
 import subprocess
+import tkinter as tk
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from queue import Queue
+from typing import Dict, List, Union
+
 from fastclasses_json import dataclass_json, JSONMixin
+from watchdog.events import FileSystemEventHandler, FileSystemEvent, EVENT_TYPE_MODIFIED
+from watchdog.observers import Observer
 
 
 def texcount(file) -> int:
@@ -26,8 +25,16 @@ class RawWatchFile:
     filename: str
     display: str
 
-    def to_watch_file(self) -> "WatchFile":
-        return WatchFile(Path(self.filename), self.display)
+    def to_watch_files(self) -> List["WatchFile"]:
+        if os.path.isfile(self.filename):
+            return [WatchFile(Path(self.filename), self.display)]
+        else:
+            try:
+                paths = glob.glob(self.filename, recursive=True)
+                return [WatchFile(Path(p), Path(p).stem) for p in paths]
+            except Exception as e:
+                print(f'Error globbing {self.filename}: {e}')
+                return []
 
 
 @dataclass
@@ -46,7 +53,7 @@ class RawConfigs(JSONMixin):
 
     def to_configs(self) -> "Configs":
         return Configs(
-            [f.to_watch_file() for f in self.files],
+            [ff for f in self.files for ff in f.to_watch_files()],
             datetime.strptime(self.ddl, self.time_format),
             self.show_total
         )
@@ -64,11 +71,11 @@ class Configs:
 
 
 def create_label(
-    master: tk.Widget,
-    display: str,
-    count: int,
-    stringvar: tk.StringVar,
-    font,
+        master: tk.Misc,
+        display: str,
+        count: int,
+        stringvar: tk.StringVar,
+        font,
 ):
     stringvar.set(str(count))
     frame = tk.Frame(master)
@@ -133,7 +140,7 @@ class App(object):
         for folder in set([f.path.parent for f in self._configs.files]):
             handler = CustomHandler(self)
             observer = Observer()
-            observer.schedule(handler, folder, recursive=True)
+            observer.schedule(handler, str(folder), recursive=True)
             self._observers.append(observer)
         self._root.bind(App.WATCHDOG_EVENT, self._handle_watchdog_event)
         for observer in self._observers:
@@ -144,6 +151,7 @@ class App(object):
             remaining_time = remain_time(self._configs.ddl)
             self._remain_time.set(remaining_time)
             self._root.after(1000, refresh_remain)
+
         refresh_remain()
 
     def _update_total(self):
@@ -193,9 +201,9 @@ class App(object):
 
 
 class CustomHandler(FileSystemEventHandler):
-    def __init__(self, app: App):
+    def __init__(self, _app: App):
         FileSystemEventHandler.__init__(self)
-        self._app = app
+        self._app = _app
 
     def on_modified(self, event: FileSystemEvent):
         self._app.notify(event)
